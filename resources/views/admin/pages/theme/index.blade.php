@@ -65,9 +65,9 @@
                                 <img src="{{$theme->thumbnail}}" class="w-10 h-10 rounded">
                             </td>
                             <td>{{$theme->name}}</td>
-                            <td>{{$theme->creator_d->name}}</td>
+                            <td>{{$theme->creator->name}}</td>
                             <td>{{\Carbon\Carbon::parse($theme->created_at)->format('Y-m-d')}}</td>
-                            <td>{{$theme->category_d->name}}</td>
+                            <td>{{$theme->category->name}}</td>
                             <td>Rp{{number_format($theme->cost)}}</td>
                             @if ($theme->is_premium)
                                 <td>Rp{{number_format($theme->price)}}</td>

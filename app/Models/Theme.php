@@ -11,10 +11,10 @@ class Theme extends Model
     protected $table = 'themes';
     protected $guarded = [];
 
-    public function creator_d(){
+    public function creator(){
         return $this->belongsTo(Creator::class, 'creator_id');
     }
-    public function category_d(){
+    public function category(){
         return $this->belongsTo(ThemeCategory::class, 'category_id');
     }
 }

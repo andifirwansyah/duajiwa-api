@@ -11,14 +11,21 @@
         </li>
         <li>
             <a href="side-menu-light-inbox.html" class="side-menu {{ Request::segment(1) == 'orders' ? 'side-menu--active' : '' }}">
-                <div class="side-menu__icon"> <i data-lucide="inbox"></i> </div>
+                <div class="side-menu__icon"> <i data-lucide="credit-card"></i> </div>
                 <div class="side-menu__title"> Orders </div>
             </a>
         </li>
         <li>
             <a href="{{url('/theme')}}" class="side-menu {{ Request::segment(1) == 'theme' ? 'side-menu--active' : '' }}">
-                <div class="side-menu__icon"> <i data-lucide="hard-drive"></i> </div>
+                <div class="side-menu__icon"> <i data-lucide="layout"></i> </div>
                 <div class="side-menu__title"> Themes </div>
+            </a>
+        </li>
+
+        <li>
+            <a href="{{url('/theme')}}" class="side-menu {{ Request::segment(1) == 'package' ? 'side-menu--active' : '' }}">
+                <div class="side-menu__icon"> <i data-lucide="package"></i> </div>
+                <div class="side-menu__title"> Packages </div>
             </a>
         </li>
 

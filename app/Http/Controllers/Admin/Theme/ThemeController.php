@@ -15,9 +15,9 @@ class ThemeController extends Controller
 {
     public function list_themes(Request $request){
         $keyword = $request->keyword;
-        $themes = Theme::with(['creator_d','category_d'])->paginate(5);
+        $themes = Theme::with(['creator','category'])->paginate(5);
         if($keyword){
-            $themes = Theme::with(['creator_d','category_d'])->whereRaw(" (`id` like ? or `name` like ? or `creator` like ? ) ",["%".$keyword."%","%".$keyword."%","%".$keyword."%"])
+            $themes = Theme::with(['creator','category'])->whereRaw(" (`id` like ? or `name` like ? or `creator` like ? ) ",["%".$keyword."%","%".$keyword."%","%".$keyword."%"])
                 ->paginate(5);
         }
         return view('admin.pages.theme.index', compact('themes'));

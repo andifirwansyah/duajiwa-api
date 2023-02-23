@@ -13,13 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('packages', function (Blueprint $table) {
+        Schema::create('package_features', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->default('Basic');
-            $table->string('whatsapp')->default('50');
-            $table->string('email')->default('50');
-            $table->string('guest')->default('50');
-            $table->integer('price')->default(0);
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -31,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('packages');
+        Schema::dropIfExists('package_features');
     }
 };

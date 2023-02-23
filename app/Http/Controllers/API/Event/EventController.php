@@ -38,10 +38,11 @@ class EventController extends Controller
                 'user_id' => $user->id,
                 'name' => $request->input('name'),
                 'description' => $request->input('description'),
-                'category_id' => $request->input('category')
+                'category_id' => $request->input('category'),
+                'step' => 1
             ]);
             DB::commit();
-            return response()->json($event);
+            return response()->json($event, 201);
         }catch(Exception $e){
             DB::rollback();
             return response()->json($e, 500);
@@ -82,10 +83,25 @@ class EventController extends Controller
                 'address' => $request->address,
             ]);
             DB::commit();
-            return response()->json($detail_event);
+            return response()->json($detail_event, 201);
         }catch(Exception $e){
             DB::rollback();
             return response()->json($e, 500);
+        }
+    }
+
+    public function update_step_event(Request $request){
+        try {
+            DB::beginTransaction();
+            Event::where('id', $request->event_id)->update([
+                'step' => $request->step
+            ]);
+            DB::commit();
+            $event = Event::where('id', $request->event_id)->first();
+            return response()->json($event, 200);
+        } catch (\Throwable $th) {
+            DB::rollback();
+            throw $th;
         }
     }
 }

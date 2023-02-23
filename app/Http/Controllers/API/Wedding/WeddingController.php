@@ -43,7 +43,7 @@ class WeddingController extends Controller
             ]);
             DB::commit();
             $currentCouple = WeddingCouple::where('event_id', $eventId)->get();
-            return response()->json($currentCouple, 200);
+            return response()->json($currentCouple, 201);
         }catch(Exception $e){
             DB::rollback();
             return response()->json($e);

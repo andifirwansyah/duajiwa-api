@@ -13,27 +13,22 @@ class ThemeController extends Controller
         // $category = $request->category;
         // $type = $request->type;
 
-        $themes = Theme::paginate(5);
+        $themes = Theme::with(['creator', 'category'])->paginate(10);
 
         $filter = [
-            'category' => ucwords($request->category),
-            'type' => $request->type == 'gratis' ? 0 : 1
+            'category' => $request->category,
+            'type' => $request->type == 'free' ? 0 : 1
         ];
 
         if($filter['category']){
-            $category = ThemeCategory::where('name', $filter['category'])->first();
-            $themes = Theme::where('category', $category->id)->paginate(5);
+            $themes = Theme::with(['creator', 'category'])->where('category', $filter['category'])->paginate(5);
         }
 
         if($filter['type'] == 0){
-            $themes = Theme::where('is_premium', 0)->paginate(5);
+            $themes = Theme::with(['creator', 'category'])->where('is_premium', 0)->paginate(5);
         }
 
-        // return response()->json($filter['type']);
-
-        $categories = ThemeCategory::all();
-
-        return view('user.pages.theme.index', compact('themes', 'categories'));
+        return response()->json($themes, 200);
     }
 
     public function detail_theme(Request $request){
