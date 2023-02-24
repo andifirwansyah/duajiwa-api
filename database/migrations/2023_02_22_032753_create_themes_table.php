@@ -29,7 +29,7 @@ return new class extends Migration
             $table->integer('price')->nullable();
             $table->integer('discount')->nullable();
             $table->boolean('is_premium')->default(true);
-            $table->string('demo_subdomain');
+            $table->string('demo_url');
             $table->string('path');
             $table->string('tags')->nullable();
             $table->boolean('is_published')->default(true);
