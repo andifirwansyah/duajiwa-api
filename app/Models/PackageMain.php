@@ -10,4 +10,8 @@ class PackageMain extends Model
     use HasFactory;
     protected $table = 'package_main';
     protected $guarded = [];
+
+    public function detail(){
+        return $this->belongsTo(PackageFeature::class, 'feature_id');
+    }
 }

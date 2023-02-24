@@ -8,6 +8,7 @@ use App\Http\Controllers\API\Profile\ProfileController;
 use App\Http\Controllers\API\Event\EventController;
 use App\Http\Controllers\API\Wedding\WeddingController;
 use App\Http\Controllers\API\Theme\ThemeController;
+use App\Http\Controllers\API\Package\PackageController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -41,9 +42,11 @@ Route::group([
 
         Route::post('/event/wedding/couple', [WeddingController::class, 'add_couple']);
 
-
         // theme routes
         Route::get('/themes', [ThemeController::class, 'list_themes']);
+
+        // packages
+        Route::get('/packages', [PackageController::class, 'list_packages']);
 
     });
 

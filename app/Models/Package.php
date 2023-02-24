@@ -10,4 +10,8 @@ class Package extends Model
     use HasFactory;
     protected $table = 'packages';
     protected $guarded = [];
+
+    public function features(){
+        return $this->hasMany(PackageMain::class, 'package_id', 'id');
+    }
 }
