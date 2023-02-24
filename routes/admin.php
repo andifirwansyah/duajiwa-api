@@ -5,6 +5,8 @@ use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\Admin\Home\HomeController;
 use App\Http\Controllers\Admin\Theme\ThemeController;
 use App\Http\Controllers\Admin\Master\MasterController;
+use App\Http\Controllers\Admin\Package\PackageController;
+use App\Http\Controllers\Admin\Package\PackageFeatureController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,5 +35,12 @@ Route::domain('admin.'.env('APP_URL'))->name('admin.')->group(function () {
 
         Route::get('/setting/theme-category', [MasterController::class, 'list_categories']);
         Route::match(['GET', 'POST'], '/setting/theme-category/add', [MasterController::class, 'add_new_theme_category']);
+
+        Route::resource('/package', PackageController::class)->names([
+            'create' => 'package.create'
+        ]);
+        Route::resource('/package-feature', PackageFeatureController::class)->names([
+            'create' => 'package-feature.create'
+        ]);
     });
 });
